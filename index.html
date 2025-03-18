@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shhhhh</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #222;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            position: relative;
+            flex-direction: column;
+        }
+
+        #message {
+            font-size: 3rem;
+            font-weight: bold;
+            position: absolute;
+            top: 20px;
+        }
+
+        .butterfly {
+            position: absolute;
+            width: 100px;
+            height: auto;
+            animation: fly 6s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes fly {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-20px) rotate(-5deg);
+            }
+            50% {
+                transform: translateY(0px) rotate(5deg);
+            }
+            75% {
+                transform: translateY(-20px) rotate(-5deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        #letter {
+            display: none;
+            background: url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHd2bXgxYm5rNWxvbjY4a2ttbDR5YmE1OTV0aHU2ZjdrbTJzcDF4diZlcD12MV9naWZzX3NlYXJjaCZjdD1n/7RtkBgYvL5ATS/200.gif') no-repeat center center;
+            background-size: cover;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        #showLetter {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background: #ff007f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="message">Palihug ko ug pislit</div>
+    <button id="showLetter">Ayaw ko pislita</button>
+    <div id="letter">
+        <p>Hi Mommy,</p>
+        <p>I just want to take a moment to remind you of how incredible you are and I'm so proud of my mommy. Life can sometimes be challenging, and I know you carry so much on your shoulders. But through it all, you shine with strength, grace, and an unbreakable spirit.</p>
+        <p>You are more than enough. You are smart, beautiful, and capable of achieving anything you set your heart on. No matter what obstacles come your way, I believe in you, and I know you will rise above them.</p>
+        <p>Remember that you are never alone. I am always here, standing by your side, cheering you on, and loving you endlessly. No matter how tough the road gets, I will walk it with you.</p>
+        <p>Keep dreaming, keep striving, and never stop believing in yourself because I believe na kaya gyud nimo sorry na putol ang english nahutdan HAHAHA.</p>
+        <p>May Matcha ka sakin,</p>
+        <p>From your Bayot</p>
+    </div>
+    
+    <script>
+        document.getElementById("showLetter").addEventListener("click", function() {
+            document.getElementById("letter").style.display = "block";
+        });
+
+        document.addEventListener("click", function(event) {
+            if (event.target !== document.getElementById("showLetter")) {
+                let butterfly = document.createElement("img");
+                butterfly.src = "https://media.tenor.com/EaOT5FIIJh8AAAAi/borboletas-butterfly.gif"; /* Replace with a high-quality butterfly image URL */
+                butterfly.classList.add("butterfly");
+                butterfly.style.left = `${event.clientX - 50}px`;
+                butterfly.style.top = `${event.clientY - 50}px`;
+                
+                document.body.appendChild(butterfly);
+                
+                setTimeout(() => {
+                    butterfly.remove();
+                }, 6000);
+            }
+        });
+    </script>
+</body>
+</html>
